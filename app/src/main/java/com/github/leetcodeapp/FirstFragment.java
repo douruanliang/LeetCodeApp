@@ -1,5 +1,7 @@
 package com.github.leetcodeapp;
 
+import android.app.Application;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 public class FirstFragment extends Fragment {
+
 
     @Override
     public View onCreateView(

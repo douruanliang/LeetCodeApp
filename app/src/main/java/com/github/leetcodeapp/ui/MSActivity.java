@@ -10,6 +10,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 
+import com.github.leetcodeapp.KeepManager;
 import com.github.leetcodeapp.R;
 
 public class MSActivity extends Activity {
@@ -28,7 +29,7 @@ public class MSActivity extends Activity {
             }
         });
 
-        new Thread(new Runnable() {
+      /*  new Thread(new Runnable() {
             @Override
             public void run() {
                 System.out.println("main 开启子线程");
@@ -43,7 +44,9 @@ public class MSActivity extends Activity {
 
                 Looper.loop();
             }
-        }).start();
+        }).start();*/
+
+        KeepManager.getInstance().registerKeep(this);
     }
 
 
@@ -60,4 +63,10 @@ public class MSActivity extends Activity {
         }).start();
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        KeepManager.getInstance().unregisterKeep(this);
+    }
 }
