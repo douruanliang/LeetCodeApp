@@ -1,21 +1,22 @@
 package com.github.leetcodeapp.ui;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
+import android.util.SparseArray;
 import android.view.View;
 
 import com.github.leetcodeapp.KeepManager;
 import com.github.leetcodeapp.R;
 
+import java.util.HashMap;
+
 public class MSActivity extends Activity {
 
     private Handler childHandler;
+    HashMap map;
+    SparseArray demo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +48,19 @@ public class MSActivity extends Activity {
         }).start();*/
 
         KeepManager.getInstance().registerKeep(this);
+
+
+        //** 变量合并
+
+        String s7 = "good good" + " study";
+
+        String s8 = "good good study";
+
+        System.out.println(s7 == s8);
     }
 
 
-    public void fabOnClick(){
+    public void fabOnClick() {
         new Thread(new Runnable() {
             @Override
             public void run() {
