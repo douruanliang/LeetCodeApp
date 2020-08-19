@@ -1,5 +1,6 @@
 package com.github.leetcodeapp.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -9,6 +10,8 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+
+import com.github.leetcodeapp.R;
 
 /**
  * @author: dourl
@@ -44,6 +47,7 @@ public class ShapeView extends View {
         setMeasuredDimension(Math.min(w,h),(Math.min(w,h)));
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onDraw(Canvas canvas) {
         // 方
@@ -56,7 +60,7 @@ public class ShapeView extends View {
                 canvas.drawCircle(center,center,center,mPaint);
                 break;
             case SQUARE:
-                mPaint.setColor(Color.BLUE);
+                mPaint.setColor(R.color.rect);
                 canvas.drawRect(0,0,getWidth(),getHeight(),mPaint);
                 break;
             case TRIANGLE:
@@ -92,5 +96,9 @@ public class ShapeView extends View {
 
     public enum Shape{
         CIRCLE,SQUARE,TRIANGLE;
+    }
+
+    public Shape getCurrentShape() {
+        return mCurrentShape;
     }
 }
