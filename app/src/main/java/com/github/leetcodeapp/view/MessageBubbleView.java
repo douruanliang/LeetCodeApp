@@ -120,7 +120,6 @@ public class MessageBubbleView extends View {
         float tanA = dy / dx;
         //角A
         double aTan = Math.atan(tanA);
-        // p0 -> p1 -> p2 -p3 - >p0 （连线回路）
         // 固定圆的起点
         float p0X = (float) (mFixActionPoint.x + mFixRadius * Math.sin(aTan));
         float p0Y = (float) (mFixActionPoint.y - mFixRadius * Math.cos(aTan));
