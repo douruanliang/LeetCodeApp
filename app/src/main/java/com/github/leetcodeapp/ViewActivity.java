@@ -1,26 +1,24 @@
 package com.github.leetcodeapp;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 
-import com.github.leetcodeapp.view.BubbleMessageTouchListener;
 import com.github.leetcodeapp.view.ColorTrackTextView;
-import com.github.leetcodeapp.view.LoadingView;
-import com.github.leetcodeapp.view.MessageBubbleView;
+import com.github.leetcodeapp.view.listData.ListDataScreenView;
+import com.github.leetcodeapp.view.listData.ListScreenMenuAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class ViewActivity extends Activity {
 
     ColorTrackTextView mColorTrackText;
-    LoadingView mLoadLayout;
+    //LoadingView mLoadLayout;
 
     Handler childHandler;
+    ListDataScreenView mListDataScreenView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +37,13 @@ public class ViewActivity extends Activity {
             }
 
         });
-
+/*
         MessageBubbleView.attach(findViewById(R.id.id_eg), new BubbleMessageTouchListener.BubbleDisappearListener() {
             @Override
             public void dismiss(View view) {
 
             }
-        });
+        });*/
 
 
 
@@ -65,6 +63,11 @@ public class ViewActivity extends Activity {
                 Looper.loop();
             }
         }).start();*/
+
+
+        mListDataScreenView = findViewById(R.id.list_data_screen_view);
+
+        mListDataScreenView.setAdapter(new ListScreenMenuAdapter(this));
     }
 
 
@@ -125,12 +128,12 @@ public class ViewActivity extends Activity {
 
             }
         });
-        animator.start();*/
+        animator.start();
         if (mLoadLayout != null) {
             System.out.println("MMMMMMMMM");
             mLoadLayout.setVisibility(View.INVISIBLE);
         }
-
+*/
     }
 
 }
