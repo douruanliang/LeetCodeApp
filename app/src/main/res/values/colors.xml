@@ -8,4 +8,11 @@
     <color name="triangle">#aa72d572</color>
     <color name="circle">#aa738ffe</color>
     <color name="rect">#aae84e40</color>
+
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorPageBg">#f2f4f5</color>
+    <color name="colorTheme">#ffce3d3a</color>
+    <color name="colorRateRed">#FB5B81</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="tabBackground">#777D7D7D</color>
 </resources>
