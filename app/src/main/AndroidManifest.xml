@@ -17,11 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.DemoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.MSActivity" />
         <activity
@@ -37,6 +32,16 @@
             android:excludeFromRecents="true"
             android:taskAffinity="com.github.leetcodekeep"
             android:theme="@style/KeepTheme" />
+
+        <service android:name=".service.BookCheckService"
+            android:exported="true"
+            android:enabled="true"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="Binder_S"></action>
+            </intent-filter>
+
+        </service>
     </application>
 
 </manifest>
