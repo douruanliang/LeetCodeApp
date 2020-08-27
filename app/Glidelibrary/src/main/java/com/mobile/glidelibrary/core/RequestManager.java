@@ -41,7 +41,7 @@ public class RequestManager {
                     .add(fragment, FRAGMENT_ACTIVITY_NAME)
                     .commitAllowingStateLoss();
         }
-        mHandle.sendEmptyMessage(999999999);
+        mHandle.sendEmptyMessage(9999);
     }
 
     public RequestManager(Activity activity) {
@@ -55,7 +55,7 @@ public class RequestManager {
                     .add(fragment, ACTIVITY_NAME)
                     .commitAllowingStateLoss();
         }
-        mHandle.sendEmptyMessage(999999999);
+        mHandle.sendEmptyMessage(9999);
     }
 
     public RequestManager(Context context) {
@@ -65,6 +65,7 @@ public class RequestManager {
     Handler mHandle = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(@NonNull Message msg) {
+
             return false;
         }
     });
@@ -74,6 +75,11 @@ public class RequestManager {
      * @return
      */
     public RequestTargetEngine load(String url) {
+
+        // 移除Handler
+        mHandle.removeMessages(9999);
+        // 把值传递给 引擎
+        requestTargetEngine.loadValueInitAction(url,requestManagerContext);
         return requestTargetEngine;
     }
 }

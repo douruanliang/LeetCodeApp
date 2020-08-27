@@ -1,5 +1,7 @@
 package com.mobile.glidelibrary.resource;
 
+import android.util.Log;
+
 import com.mobile.glidelibrary.utils.Tool;
 
 /**

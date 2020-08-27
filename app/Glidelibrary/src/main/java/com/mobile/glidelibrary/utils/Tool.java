@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -116,13 +117,14 @@ public class Tool {
         MessageDigest messageDigest;
         String encodeStr = "";
         try {
-            messageDigest = MessageDigest.getInstance("SHA_256");
+            messageDigest = MessageDigest.getInstance("SHA-256");
             messageDigest.update(str.getBytes("UTF-8"));
             encodeStr = bytes2Hex(messageDigest.digest());
-
+            Log.d("RequestTargetEngine", " SHA_256..encodeStr >>>>" + encodeStr);
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+
         return encodeStr;
     }
 

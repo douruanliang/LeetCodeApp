@@ -20,7 +20,7 @@ public class ActiveCache {
     private Map<String, WeakReference<Value>> map = new HashMap<>();
     //目的 ：为了监听 弱应用是否被回收了
     private ReferenceQueue<Value> mQueue;
-    private boolean isCloseThread = false;
+    private boolean isCloseThread ;
     private Thread thread;
     private boolean isByRemove = false;
     private ValueCallBack mValueCallBack;
@@ -30,7 +30,7 @@ public class ActiveCache {
     }
 
     /**
-     * 添加
+     * 添加 活动缓存
      *
      * @param key
      * @param value
@@ -96,7 +96,6 @@ public class ActiveCache {
 
     public class CustomWeakReference extends WeakReference<Value> {
         private String key;
-
         public CustomWeakReference(Value referent, ReferenceQueue<? super Value> q, String key) {
             super(referent, q);
             this.key = key;
@@ -111,9 +110,11 @@ public class ActiveCache {
             @Override
             public void run() {
                 super.run();
+                System.out.println("ReferenceQueue 线程状态" + isCloseThread);
                 while (!isCloseThread) {
                     try {
                         if (!isByRemove) { //不是手动移除的时候
+                            System.out.println("ReferenceQueue  手动" + isByRemove);
                             Reference<? extends Value> remove = mQueue.remove();
                             CustomWeakReference weakReference = (CustomWeakReference) remove;
                             if (map != null && !map.isEmpty()) {

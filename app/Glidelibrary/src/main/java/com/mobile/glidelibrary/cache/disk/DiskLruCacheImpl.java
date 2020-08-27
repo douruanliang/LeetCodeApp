@@ -40,9 +40,9 @@ public class DiskLruCacheImpl {
     public void put(String key, Value value) {
         DiskLruCache.Editor editor = null;
         OutputStream outputStream = null;
+        Log.d(TAG, "put {}" + "保存到磁盘");
         try {
             editor = diskLruCache.edit(key);
-
             outputStream = editor.newOutputStream(0);
             Bitmap bitmap = value.getBitmap();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
@@ -85,7 +85,7 @@ public class DiskLruCacheImpl {
                 Bitmap result = BitmapFactory.decodeStream(inputStream);
                 value.setBitmap(result);
                 //保存key
-                value.setmKey(key);
+                value.setKey(key);
                 return value;
             }
 
@@ -94,7 +94,9 @@ public class DiskLruCacheImpl {
             e.printStackTrace();
         } finally {
             try {
-                inputStream.close();
+                if (inputStream != null) {
+                    inputStream.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

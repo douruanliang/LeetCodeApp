@@ -63,11 +63,11 @@ public class Value {
         this.mCallBack = mCallBack;
     }
 
-    public String getmKey() {
+    public String getKey() {
         return mKey;
     }
 
-    public void setmKey(String mKey) {
+    public void setKey(String mKey) {
         this.mKey = mKey;
     }
 
@@ -79,9 +79,10 @@ public class Value {
     public void useAction() {
         Tool.checkNotEmpty(mBitmap);
         if (mBitmap.isRecycled()) {
-            Log.d(TAG, "useAction : count" + count);
+            Log.d(TAG, "useAction : 已经被回收了" );
             return;
         }
+        Log.d(TAG, "useAction : count 加一" + count);
         count++;
     }
 
@@ -89,10 +90,12 @@ public class Value {
      * 使用完了 --1
      */
     public void usedAction() {
-        if (count-- <= 0 && mCallBack != null) {
+        count--;
+        if (count <= 0 && mCallBack != null) {
             // 回调接口告诉外界，不再使用。
             mCallBack.valueNonUseListener(mKey, this);
         }
+        Log.d(TAG, "usedAction : count 减一" + count);
     }
 
     /**
