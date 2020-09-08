@@ -9,14 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".kotlin.HookActivity"></activity>
-        <activity android:name=".ui.GlideActivity">
+        <activity android:name=".ui.MatrsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".kotlin.HookActivity" />
+        <activity android:name=".ui.GlideActivity"></activity>
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".ui.DemoActivity" />
         <activity android:name=".ui.MSActivity" />
