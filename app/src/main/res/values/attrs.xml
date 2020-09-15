@@ -5,4 +5,9 @@
         <attr name="originColor" format="color"></attr>
         <attr name="changeColor" format="color"></attr>
     </declare-styleable>
+
+    <declare-styleable name="ButtonSelectView">
+        <attr name="text" format="string"></attr>
+        <attr name="icon_left" format="reference"/>
+    </declare-styleable>
 </resources>

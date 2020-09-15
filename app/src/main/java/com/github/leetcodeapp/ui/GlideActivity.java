@@ -5,13 +5,21 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.os.MessageQueue;
+import android.util.Log;
 import android.view.DisplayCutout;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.FragmentActivity;
 
@@ -44,7 +52,7 @@ public class GlideActivity extends FragmentActivity {
                     View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
                     View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
             int visibility = window.getDecorView().getSystemUiVisibility();
-            visibility|= flags; //追加沉浸式设置
+            visibility |= flags; //追加沉浸式设置
 
             window.getDecorView().setSystemUiVisibility(visibility);
 
@@ -62,7 +70,28 @@ public class GlideActivity extends FragmentActivity {
                 requestPermissions(perms, 200);
             }
         }
+
+        todo();
     }
+
+    private void todo() {
+
+
+        MessageQueue.IdleHandler idleHandler = new MessageQueue.IdleHandler() {
+            @Override
+            public boolean queueIdle() {
+                System.out.println(" 消息队列空闲了");
+                return false;
+            }
+        };
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getMainLooper().getQueue().addIdleHandler(idleHandler);
+        }
+
+
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     private boolean hasDisplayCutout(Window window) {
@@ -107,4 +136,8 @@ public class GlideActivity extends FragmentActivity {
                 .into(imageView2);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

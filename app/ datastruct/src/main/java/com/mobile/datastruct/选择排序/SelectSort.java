@@ -10,6 +10,10 @@ public class SelectSort {
         selectSort(new int[]{2, 3, 1, 5, 33, 44, 23, 88, 54});
     }
 
+    /**
+     *选择排序
+     * @param array
+     */
     private static void selectSort(int[] array) {
         int min = 0;
         for (int i = 0; i < array.length; i++) {
