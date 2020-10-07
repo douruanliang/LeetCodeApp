@@ -8,7 +8,7 @@ public class NodeTest {
 
     public static void main(String[] args) {
 
-        Node head = new Node(1);
+       /* Node head = new Node(1);
         Node node2 = new Node(2);
         Node node3 = new Node(3);
         Node node4 = new Node(4);
@@ -19,9 +19,17 @@ public class NodeTest {
 
         node3.next = node4;
         //reverse(head);
-        recursion_display(5);
+        recursion_display(5);*/
 
+        int [] intArray = {1,2,3,4,5};
 
+        for (int i =0;i<intArray.length-1;i++){
+            intArray[i] = intArray[i]*2;
+        }
+
+        for (int item :intArray){
+            System.out.println("--->"+item);
+        }
     }
 
     public static class Node {

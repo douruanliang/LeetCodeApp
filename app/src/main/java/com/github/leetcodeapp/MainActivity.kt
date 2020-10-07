@@ -1,22 +1,12 @@
 package com.github.leetcodeapp
 
-import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.MessageQueue
-import android.view.Menu
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
+import android.util.Log
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import java.util.*
+import androidx.navigation.ui.AppBarConfiguration
+import com.github.leetcodeapp.view.test.MyButton
+import com.github.leetcodeapp.view.test.MyImageView
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,39 +14,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+        setContentView(R.layout.activity_test_demo)
 
 
-        val idleHandler:MessageQueue.IdleHandler = object :MessageQueue.IdleHandler {
-            override fun queueIdle(): Boolean {
-                return false
-            }
+        findViewById<MyButton>(R.id.id_btn).setOnClickListener {v -> { println("image")} }
 
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            mainLooper.queue.addIdleHandler(idleHandler)
-        }
+        findViewById<MyImageView>(R.id.id_image).setOnClickListener { v -> { println("image")} }
 
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
-        return true
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        Log.i("xx", "MainActivity的dispatchTouchEvent" + ev?.getAction());
+        return super.dispatchTouchEvent(ev)
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        Log.i("xx", "MainActivity的onTouchEvent" + event?.getAction());
+        return super.onTouchEvent(event)
     }
 }

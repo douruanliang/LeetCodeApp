@@ -7,9 +7,9 @@ package com.mobile.datastruct.快排序;
 public class Solution {
 
     public static void main(String[] args) {
-        //int[] array = new int[]{2, 3, 1, 5, 33, 1023, 44, 23, 88, 54, 100};
+        int[] array = new int[]{2, 3, 1, 5, 33, 1023, 44, 23, 88, 54, 100};
 
-        int[] array = new int[]{2, 3, 1, 5,10};
+        //int[] array = new int[]{2, 3, 1, 5,10};
         Solution solution = new Solution();
         solution.quick(array);
         // 输出验证
@@ -41,7 +41,7 @@ public class Solution {
 
     }
     /**
-     * 找到中间点
+     * 找到 一个基准位置
      * @param data
      * @param left
      * @param right
@@ -56,7 +56,7 @@ public class Solution {
                 System.out.println("我从右边出发，向左前进找小基准数的数");
             }
             //一旦跳出循环，说明此时遇到小于的基数，
-            // 那么交换一下，目的是为了下次能够再循环进入
+            // 那么交换一下，目的是为了下面的循环 更右可能好的排序，毕竟上面的while 体有限执行
             data[left] = data[right];
             while (left <right && data[left]<= temp){
                 left++;

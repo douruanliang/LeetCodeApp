@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import androidx.core.os.TraceCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -41,6 +42,7 @@ public class MainActivity extends FragmentActivity implements ITestView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        TraceCompat.beginSection("activityOnCreate");
         setContentView(R.layout.activity_main);
         //add comment
         viewpager = (ViewPager)findViewById(R.id.viewpager);
@@ -60,6 +62,7 @@ public class MainActivity extends FragmentActivity implements ITestView {
                 mInviteHelper.hideInviteView();
             }
         });
+        TraceCompat.endSection();
     }
 
 
